@@ -28,7 +28,7 @@ boards = [
 
 #Set options for selenium chrome driver
 opt = Options()
-#opt.add_argument("--kiosk")
+opt.add_argument("--kiosk")
 opt.add_experimental_option("useAutomationExtension", False)
 opt.add_experimental_option("excludeSwitches",["enable-automation"])
 #formatter = SyslogBOMFormatter(logging.BASIC_FORMAT)
