@@ -3,14 +3,13 @@ import os
 import logging
 import logging.handlers
 from logging.handlers import SysLogHandler
-from scapy.all import sniff
+from scapy.all import sniff, Ether
 
 # custom_action used by scapy.sniff to take action based on packet
 def custom_action(packet):
-    for p in packet:
-        if p[1].src in addressList:
-            #TODO: still active
-            print("still active")
+    if packet[0].src in addressList:
+         #TODO: still active
+         return f"{packet[0].src}"
 
     #end custom_action
 
@@ -23,10 +22,10 @@ if __name__ == "__main__":
     handler = logging.handlers.SysLogHandler(facility=SysLogHandler.LOG_DAEMON, address='/dev/log')
     logger.addHandler(handler)
     myinterface = "wlan0"
-    myfilter = "tcp"
+    myfilter = "arp"
     #populate addressList from sqlite3 or rest
     addressList = [
-        "10.0.0.232",
+        "b8:27:eb:e4:13:ed",
     ]
 
     logger.debug("MyView: starting scanner")
