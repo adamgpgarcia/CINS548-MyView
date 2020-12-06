@@ -4,9 +4,12 @@ from view.models import ViewUser
 from .serializers import ViewUserSerializer
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import permission_classes
 
 
 @api_view(['GET'])
+@permission_classes((IsAuthenticated,))
 def viewuser_list(request):
     if request.method == 'GET':
         users=ViewUser.objects.all()
@@ -23,6 +26,7 @@ def viewuser_list(request):
             return Response(serializers.errors)
             '''
 @api_view(['PUT'])
+@permission_classes((IsAuthenticated,))
 def viewuser_Update(request,id):
     try:
         user=ViewUser.objects.get(id=id)

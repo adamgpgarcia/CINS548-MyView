@@ -3,4 +3,4 @@ from view.models import ViewUser
 class ViewUserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model=ViewUser
-        fields=['id', 'username', 'MacAdd', 'url', 'connect']
+        fields=['id', 'username', 'MacAdd', 'url', 'connect', 'lastLogin']
