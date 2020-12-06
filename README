@@ -3,3 +3,20 @@ Add /opt/selenium to PATH
 Place driver.py and credits.html in /opt/myview
 Install required python packages:
    pip install -r requirements.txt
+
+Logout / Login / Scan python Script complete
+
+	Name: checkDataBase.py
+	Requires: 
+		- run with SUDO 
+		- a user Token inserted into token (required to access database)
+		- router IP inserted into targetIP
+		- install requirements.txt
+	Functions:
+		- Scans local network
+		- Checks database for current users
+		- compares local scan with database and login/logout users
+		- user will be signed out after 15 after leaving the network  
+ 
+	
+   
