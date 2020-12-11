@@ -37,9 +37,9 @@ def getActiveList():
         cursor = conn.execute("SELECT url FROM view_viewuser WHERE connect=true")
         for row in cursor:
             boards.append(row[0])
-            logger.debug("MyView: url added to rotation = %s", row[0])
+            logger.debug("MyView URL added to rotation = %s", row[0])
     except sqlite3.Error as error:
-        logger.error("MyView: %s", error)
+        logger.error("MyView %s", error)
     finally:
         boards.append(credits_page)
     return boards
@@ -48,7 +48,7 @@ def main():
     ''' main function loads urls from sqlite3 db and uses selenium to drive dakboard rotation'''
     #Set options for selenium chrome driver
     opt = Options()
-    #opt.add_argument("--kiosk")
+    opt.add_argument("--kiosk")
     opt.add_argument("disk-cache-size=0")
     opt.add_experimental_option("useAutomationExtension", False)
     opt.add_experimental_option("excludeSwitches", ["enable-automation"])
@@ -62,7 +62,6 @@ def main():
         boards = getActiveList()
         #display each url in boards
         for url in boards:
-            print(url)
             driver.get(url)
             driver.delete_all_cookies()
             # test & remove bad links from rotation;
